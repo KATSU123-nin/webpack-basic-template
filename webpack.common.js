@@ -27,7 +27,10 @@ module.exports = ({ outputFile, outputImg, outputCss }) => ({
                 test: /\.(css|sass|scss)$/,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // esModule: false,
+                        }
                     },
                     {
                         loader: "css-loader",
@@ -73,7 +76,7 @@ module.exports = ({ outputFile, outputImg, outputCss }) => ({
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: `styles/${outputCss}.css`
+            filename: `styles/${outputCss}.css`,
         }),
         new ESLintPlugin({
             extensions: ['.js'],
@@ -82,3 +85,4 @@ module.exports = ({ outputFile, outputImg, outputCss }) => ({
 
     ]
 });
+
